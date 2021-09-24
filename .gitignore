@@ -1,0 +1,46 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+
+html-css-bootstrap-freelancer
+Live-Code/boolean-vue-dc-community
+Live-Code/boolean-code
+Esercizio 8/htmlcss-shoes
+Esercizio 7/htmlcss-shop
+Esercizio 6b/htmlcss-wp
+Esercizio 6/htmlcss-struttura-wp
+Esercizio 4/html-css-toboolist
+Esercizio 3/html-css-booleaner
+Esercizio 15/html-css-spotifyweb
+Esercizio 14/html-css-12bool
+Esercizio 12/html-css-zoom
+Esercizio 11/html-css-animation-filter
+vue-hello
+vue-email-list
+vue-dischi
+vue-dc-comics
+vue-boolzapp
+vue-boolflix
+laravel-relations
+laravel-primi-passi
+laravel-migration-seeder
+js-snack-es6
+js-simon
+js-oggetti-studenti
+js-lista-cognomi
+js-jsnacks-blocco-5
+js-fizzbuzz
+htmlcss-playstation
+html-css-bootstrap-freelancer
+es6-vuejs-my-profile
+db-first
