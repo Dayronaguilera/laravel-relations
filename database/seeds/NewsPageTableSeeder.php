@@ -2,7 +2,7 @@
 
 use App\Article;  // prendo i dati di model 2
 use App\Author;// prendo i dati di model 2
-
+use App\Tag;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker; // usiamo il faker con as gli riadiamo noi un nome 
 
@@ -35,7 +35,7 @@ class NewsPageTableSeeder extends Seeder
             'Enrico Mentana',
             'Alfredo Pedulla',
         ];
-
+        
         $authorListID = []; // qui andremo ad inserire i nostri id di author
 
         foreach($authorList as $author){ // qui Author
@@ -49,6 +49,27 @@ class NewsPageTableSeeder extends Seeder
 
         }
 
+        $tagList =[
+            'calcio',
+            'cronoca',
+            'estero',
+            'italia',
+            'roma',
+            'attualita',
+            'storia',
+            'sindaco',
+        ];
+
+        $tagListID = [];
+
+        foreach($tagList as $tag){
+
+            $tagObject = new Tag();
+            $tagObject->name = $tag;
+            $tagObject->save();
+            $tagListID[] = $tagObject->id;
+        }
+
         for ($i=0; $i < 20; $i++){
        
             // qui Article
@@ -60,11 +81,21 @@ class NewsPageTableSeeder extends Seeder
             $image = $imgArticleList[$randImageKey]; // l'assegniamo alla nuova variabile
             $article->image = $image; // la definiamo nel db
 
-            $randAuthorKey = array_rand($authorListID, 1); // estrae una img random
+            $randAuthorKey = array_rand($authorListID, 1); // estrae un autore random
             $authorID = $authorListID[$randAuthorKey]; // l'assegniamo alla nuova variabile
-            $article->authors_id = $authorID; // la definiamo nel db
+            $article->author_id = $authorID; // la definiamo nel db
 
+            $randTagKey = array_rand($tagListID, 3); // estrae un tag random
+            $tag1 = $tagListID[$randTagKey[0]];
+            $tag2 = $tagListID[$randTagKey[1]];
+            $tag3 = $tagListID[$randTagKey[2]]; // l'assegniamo alla nuova variabile
             $article->save();
+
+            $article->tag()->attach($tag1);  // qui non abbiamo bisogno del save -> attach salva da solo.
+            $article->tag()->attach($tag2);
+            $article->tag()->attach($tag3);
+ 
+
         }
     }
 }

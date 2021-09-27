@@ -1,0 +1,30 @@
+.cont-show{
+    background: rgba(216, 209, 209, 0.575);
+    
+    .container-card{
+        & .title{
+            font-weight: bold;
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 30px;
+        }
+        .container-img{
+            margin-bottom: 30px;
+            & img{
+                width: 100%;
+            }
+        }
+        .cont-date{
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .cont-footer{
+            justify-content: space-around;
+            align-items: center;
+            .font-z{
+                font-size: 20px;
+                padding: 5px;
+            }
+        }
+    }
+}

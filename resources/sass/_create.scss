@@ -1,0 +1,17 @@
+.cont-create{
+    background: rgba(216, 209, 209, 0.575);
+    text-align: center;
+    padding: 20px 0;
+
+    & .container-form{
+        border: 1px black solid;
+        text-align: center;
+
+        .input-w{
+            width: 70%;
+        }
+        select{
+            width: max-content;
+        }
+    }
+}

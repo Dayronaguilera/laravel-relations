@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article; // indichiamo il model
+use App\Author; // indichiamo il model
+use App\Tag;
 
 class ArticleController extends Controller
 {
@@ -14,9 +16,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $newsPage = Article::all(); // prendiamo tutti i dati dal db
+        $newsPages = Article::all(); // prendiamo tutti i dati dal db
         
-        return view('home', compact('newsPage')); // mandiamo tutti i dati presi dal db
+        return view('home', compact('newsPages')); // mandiamo tutti i dati presi dal db
     }
 
     /**
@@ -26,7 +28,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        $authors = Author::all(); // mandiamo author nella select
+        $tags = Tag::all();
+        return view('news.create', compact('authors','tags'));
     }
 
     /**
@@ -36,8 +40,23 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        
+        $data = $request->all();
+        
+
+        $article = new Article();
+        $article->title =$data['title'];
+        $article->content =$data['content'];
+        $article->image =$data['image'];
+        $article->author_id =$data['author_id'];
+        $article->save();
+
+        foreach($data['tag'] as $tagID) {
+            $article->tag()->attach($tagID);
+        }
+        
+        return redirect()->route('news.show', $article->id);
     }
 
     /**
@@ -46,9 +65,11 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id){
+
+        $article = Article::find($id);
+        
+        return view('news.show', compact('article'));
     }
 
     /**
@@ -57,9 +78,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id) // modifica
     {
-        //
+        
     }
 
     /**
@@ -69,7 +90,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) 
     {
         //
     }

@@ -1,0 +1,49 @@
+.cont-home{
+    background: rgba(216, 209, 209, 0.575);
+
+    & .title{
+        font-weight: bold;
+        text-align: center;
+        font-size: 50px;
+        margin-bottom: 30px;
+    }
+    .border-cont{
+        border-right:1px  rgba(200, 200, 219, 0.445) solid;
+        border-left:1px black solid;
+        padding:0 20px;
+
+        .container-left{
+            
+            .img-container{
+                
+                img{
+                    width: 100%;
+                    
+                }
+            }
+            & .cont-text{
+                margin-bottom: 30px;
+                margin-top: 10px;
+
+                & h1{
+                    font-size: 40px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    .container-right{
+        padding: 0 20px;  
+        & h1{
+            font-size: 20px;
+        }
+        & .img-container{
+            img{
+                width: 100%;
+            }
+        }
+        & .cont-text{
+            margin-bottom: 30px;
+        }
+    }
+}

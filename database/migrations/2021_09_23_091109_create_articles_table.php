@@ -18,8 +18,10 @@ class CreateArticlesTable extends Migration
             $table->string('title', 255);
             $table->text('content');
             $table->text('image');
-            $table->unsignedBigInteger('authors_id');
-            $table->foreign('authors_id')->references('id')->on('authors'); //colleghiamo le table
+
+            $table->unsignedBigInteger('author_id'); // tags authors
+            $table->foreign('author_id')->references('id')->on('authors'); //colleghiamo le table
+
             $table->timestamps();
         });
     }
